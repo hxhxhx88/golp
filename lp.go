@@ -462,3 +462,10 @@ func (l *LP) Variables() []float64 {
 	}
 	return row
 }
+
+// SetTimeout sets a timeout.
+// http://lpsolve.sourceforge.net/5.5/set_timeout.htm
+func (l *LP) SetTimeout(sec int64) error {
+	C.set_timeout(l.ptr, C.long(sec))
+	return nil
+}
